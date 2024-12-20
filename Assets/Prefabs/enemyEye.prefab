@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2629214434515735060}
   - component: {fileID: 155056153926500775}
   m_Layer: 0
-  m_Name: maung
+  m_Name: enemyEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,3 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   damageThreshold: 0.2
+  deathParticles: {fileID: 7591788112300805650, guid: d1f0afc33f8249746ba4528d5f1b2e0c, type: 3}
+  deathClip: {fileID: 8300000, guid: f52e9cc726e398b4894fb5fb611007fa, type: 3}

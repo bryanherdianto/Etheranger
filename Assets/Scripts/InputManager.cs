@@ -9,9 +9,11 @@ public class InputManager : MonoBehaviour
     private InputAction mousePositionAction;
     private InputAction mouseAction;
     public static Vector2 mousePosition;
-    public static bool isLeftClick;
-    public static bool wasLeftRelease;
-    public static bool wasLeftClick;
+
+    public static bool wasLeftPressed;
+    public static bool wasLeftReleased;
+    public static bool isLeftPressed;
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -22,8 +24,9 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         mousePosition = mousePositionAction.ReadValue<Vector2>();
-        wasLeftClick = mouseAction.WasPressedThisFrame();
-        wasLeftRelease = mouseAction.WasReleasedThisFrame();
-        isLeftClick = mouseAction.IsPressed();
+
+        wasLeftPressed = mouseAction.WasPressedThisFrame();
+        wasLeftReleased = mouseAction.WasReleasedThisFrame();
+        isLeftPressed = mouseAction.IsPressed();
     }
 }

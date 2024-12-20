@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class AngryBird : MonoBehaviour
 {
+    [SerializeField] private AudioClip hitClip;
     private Rigidbody2D rb;
     private CircleCollider2D circleCollider;
     private bool hasBeenLaunched;
     private bool shouldFaceVelocityDirection;
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -45,6 +49,8 @@ public class AngryBird : MonoBehaviour
         if(hasBeenLaunched == true)
         {
             shouldFaceVelocityDirection = false;
+            SoundManager.instance.PlayClip(hitClip, audioSource);
+            Destroy(this);
         }
     }
 }
