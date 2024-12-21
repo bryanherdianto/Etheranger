@@ -7,12 +7,28 @@ public class Pig : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 3f;
     [SerializeField] private float damageThreshold = 0.2f;
+    [SerializeField] protected GameObject deathParticles;
+    [SerializeField] protected AudioClip deathClip;
 
     private float currentHealth;
 
     private void Awake()
     {
         currentHealth = maxHealth;
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        float damage = CalculateDamage(collision.relativeVelocity);
+        if (damage > damageThreshold)
+        {
+            DamagePig(damage);
+        }
+    }
+
+    protected virtual float CalculateDamage(Vector2 collisionVelocity)
+    {
+        return collisionVelocity.magnitude;
     }
 
     public void DamagePig(float damage)
@@ -27,16 +43,13 @@ public class Pig : MonoBehaviour
     private void Die()
     {
         GameManager.instance.RemovePig(this);
+        DeathEffect();
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void DeathEffect()
     {
-        float impactVelocity = collision.relativeVelocity.magnitude;
-
-        if (impactVelocity > damageThreshold)
-        {
-            DamagePig(impactVelocity);
-        }
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(deathClip, transform.position);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class SlingShotHandler : MonoBehaviour
 {
@@ -16,19 +17,32 @@ public class SlingShotHandler : MonoBehaviour
     [SerializeField] private Transform rightStartPosition;
     [SerializeField] private Transform centerPosition;
     [SerializeField] private Transform idlePosition;
+    [SerializeField] private Transform elasticTransform;
 
     [Header("Slingshot Stats")]
     [SerializeField] private float maxDistance = 3.5f;
     [SerializeField] private float shotForce = 10f;
+    [SerializeField] private float elasticDivider = 1.2f;
+    [SerializeField] private AnimationCurve elasticCurve;
+    [SerializeField] private float maximumAnimationTime = 1f;
 
     [Header("Scripts")]
     [SerializeField] private SlingShotArea slingShotArea;
+    [SerializeField] private CameraManager cameraManager;
+    [SerializeField] private TrajectoryLine trajectoryLine;
 
     [Header("Bird")]
     [SerializeField] private AngryBird angryBirdPrefab;
     [SerializeField] private float angryBirdPositionOffset = 2f;
     [SerializeField] private float timeBetweenBirdRespawns = 2f;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip slingshotPullSound;
+    [SerializeField] private AudioClip slingshotReleaseSound;
+
+    [Header("Bomb Projectile")]
+    [SerializeField] private float bombBlastForce = 10f;
+    [SerializeField] private float bombBlastRadius = 3f;
 
     private Vector2 slingShotLinePosition;
     private Vector2 direction;
@@ -39,8 +53,12 @@ public class SlingShotHandler : MonoBehaviour
 
     private AngryBird spawnedAngryBird;
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+
         leftLineRenderer.enabled = false;
         rightLineRenderer.enabled = false;
 
@@ -49,18 +67,25 @@ public class SlingShotHandler : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame && slingShotArea.isWithinSlingShotArea())
+        if (InputManager.wasLeftPressed && slingShotArea.isWithinSlingShotArea())
         {
             clickedWithinArea = true;
+
+            if (birdOnSlingshot)
+            {
+                SoundManager.instance.PlayClip(slingshotPullSound, audioSource);
+                cameraManager.SwitchToFollowCam(spawnedAngryBird.transform);
+            }
         }
 
-        if (Mouse.current.leftButton.isPressed && clickedWithinArea && birdOnSlingshot)
+        if (InputManager.isLeftPressed && clickedWithinArea && birdOnSlingshot)
         {
             DrawLine();
             PositionAndRotateAngryBird();
+            trajectoryLine.DrawTrajectory(direction, shotForce);
         }
 
-        if (Mouse.current.leftButton.wasReleasedThisFrame && birdOnSlingshot)
+        if (InputManager.wasLeftReleased && birdOnSlingshot && clickedWithinArea)
         {
             if(GameManager.instance.HasEnoughBirds())
             {
@@ -71,7 +96,11 @@ public class SlingShotHandler : MonoBehaviour
                 
                 spawnedAngryBird.LaunchBird(direction, shotForce);
 
-                SetLines(centerPosition.position);
+                trajectoryLine.ClearTrajectory();
+
+                SoundManager.instance.PlayClip(slingshotReleaseSound, audioSource);
+
+                AnimateSlingshot();
 
                 if(GameManager.instance.HasEnoughBirds())
                 {
@@ -84,7 +113,7 @@ public class SlingShotHandler : MonoBehaviour
     #region Slingshot Methods
     private void DrawLine()
     {
-        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(InputManager.mousePosition);
         slingShotLinePosition = centerPosition.position + Vector3.ClampMagnitude(touchPosition - centerPosition.position, maxDistance);
         SetLines(slingShotLinePosition);
         direction = (Vector2)centerPosition.position - slingShotLinePosition;
@@ -108,16 +137,26 @@ public class SlingShotHandler : MonoBehaviour
 
     #endregion
 
-    #region manuk nesu Methods
+    #region Projectile Methods
 
     private void SpawnAngryBird()
     {
+        elasticTransform.DOComplete();
         SetLines(idlePosition.position);
 
         Vector2 dir = (centerPosition.position - idlePosition.position).normalized;
         Vector2 spawnPosition = (Vector2)idlePosition.position + dir * angryBirdPositionOffset;
         spawnedAngryBird = Instantiate(angryBirdPrefab, spawnPosition, Quaternion.identity);
         spawnedAngryBird.transform.right = dir;
+
+        if (spawnedAngryBird.isBomb)
+        {
+            spawnedAngryBird.SetProjectileBehavior(new BombProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedAngryBird.GetComponent<Animator>()));
+        }
+        else
+        {
+            spawnedAngryBird.SetProjectileBehavior(new NormalProjectileBehavior());
+        }
 
         birdOnSlingshot = true;
     }
@@ -132,6 +171,36 @@ public class SlingShotHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(timeBetweenBirdRespawns);
         SpawnAngryBird();
+        cameraManager.SwitchToIdleCam();
     }
+    #endregion
+
+    #region Slingshot Animation
+
+    private void AnimateSlingshot()
+    {
+        elasticTransform.position = leftLineRenderer.GetPosition(0);
+
+        float dist = Vector2.Distance(elasticTransform.position, centerPosition.position);
+
+        float time = dist / elasticDivider;
+
+        elasticTransform.DOMove(centerPosition.position, time).SetEase(elasticCurve);
+        StartCoroutine(AnimateSlingshotLines(elasticTransform, time));
+    }
+
+    private IEnumerator AnimateSlingshotLines(Transform trans, float time)
+    {
+        float elapsedTime = 0f;
+        while(elapsedTime < time && elapsedTime < maximumAnimationTime)
+        {
+            elapsedTime += Time.deltaTime;
+
+            SetLines(trans.position);
+
+            yield return null;
+        }
+    }
+
     #endregion
 }

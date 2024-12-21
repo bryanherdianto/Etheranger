@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject restartScreen;
     [SerializeField] private SlingShotHandler slingShotHandler;
     [SerializeField] private float secondsToWaitBeforeWinCheck = 3f;
+    [SerializeField] private Image nextLevelImage;
+    [SerializeField] private Image restartImage;
 
     private void Awake()
     {
@@ -23,6 +27,11 @@ public class GameManager : MonoBehaviour
         }
 
         iconHandler = FindObjectOfType<IconHandler>();
+
+        nextLevelImage.enabled = false;
+
+        nextLevelImage.rectTransform.anchoredPosition = new Vector2(0, 0);
+        restartImage.rectTransform.anchoredPosition = new Vector2(0, 0);
 
         Pig[] pigsArray = FindObjectsOfType<Pig>();
 
@@ -88,11 +97,28 @@ public class GameManager : MonoBehaviour
     {
         restartScreen.SetActive(true);
         slingShotHandler.enabled = false;
+
+        // check if there is any more levels
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int maxLevels = SceneManager.sceneCountInBuildSettings;
+        if (currentSceneIndex + 1 < maxLevels)
+        {
+            nextLevelImage.enabled = true;
+            nextLevelImage.rectTransform.anchoredPosition = new Vector2(70, 0);
+            restartImage.rectTransform.anchoredPosition = new Vector2(-70, 0);
+        }
     }
 
     public void RestartGame()
     {
+        DOTween.Clear();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextLevel()
+    {
+        DOTween.Clear();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     #endregion

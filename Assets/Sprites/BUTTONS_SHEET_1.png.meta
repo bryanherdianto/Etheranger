@@ -118,7 +118,7 @@ TextureImporter:
         width: 96
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,6 +126,48 @@ TextureImporter:
       bones: []
       spriteID: fccc884f90a5dff4b94fbd360a86f0cd
       internalID: 194217061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTONS_SHEET_1_2
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 590
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d06e4066c3b14d4a8dfd88bc2b820d6
+      internalID: 1969357415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTONS_SHEET_1_3
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 590
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75b89751ee10c63458164a528f424ead
+      internalID: -1703350388
       vertices: []
       indices: 
       edges: []
@@ -142,6 +184,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       BUTTONS_SHEET_1_0: 194217061
+      BUTTONS_SHEET_1_1: -1285955386
+      BUTTONS_SHEET_1_2: 1969357415
+      BUTTONS_SHEET_1_3: -1703350388
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

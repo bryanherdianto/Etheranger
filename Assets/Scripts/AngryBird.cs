@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class AngryBird : MonoBehaviour
 {
+    [SerializeField] private AudioClip hitClip;
+    public bool isBomb;
     private Rigidbody2D rb;
     private CircleCollider2D circleCollider;
+    private AudioSource audioSource;
     private bool hasBeenLaunched;
-    private bool shouldFaceVelocityDirection;
+
+    private IProjectileBehavior projectileBehavior;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -21,30 +26,40 @@ public class AngryBird : MonoBehaviour
         circleCollider.enabled = false;
     }
 
-    private void FixedUpdate()
+    public void SetProjectileBehavior(IProjectileBehavior behavior)
     {
-        if(hasBeenLaunched == true && shouldFaceVelocityDirection == true)
-        {
-            transform.right = rb.velocity;
-        }
+        projectileBehavior = behavior;
     }
 
     public void LaunchBird(Vector2 direction, float force)
     {
-        rb.isKinematic = false;
         circleCollider.enabled = true;
-
-        rb.AddForce(direction * force, ForceMode2D.Impulse);
-
         hasBeenLaunched = true;
-        shouldFaceVelocityDirection = true;
+
+        projectileBehavior?.OnLaunch(rb, direction, force);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(hasBeenLaunched == true)
+        if (hasBeenLaunched)
         {
-            shouldFaceVelocityDirection = false;
+            projectileBehavior?.OnCollision(transform.position);
+
+            SoundManager.instance.PlayClip(hitClip, audioSource);
+
+            if(projectileBehavior is BombProjectileBehavior)
+            {
+                StartCoroutine(HandleExplosionAndDestroy());
+            }
         }
     }
+
+    private IEnumerator HandleExplosionAndDestroy()
+    {
+        float animationDuration = 0.3f; 
+        yield return new WaitForSeconds(animationDuration);
+
+        Destroy(gameObject);
+    }
 }
+
