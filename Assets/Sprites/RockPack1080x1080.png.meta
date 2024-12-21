@@ -118,7 +118,7 @@ TextureImporter:
         width: 270
         height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,6 +126,69 @@ TextureImporter:
       bones: []
       spriteID: cde775dbe6c15d047aefcf2cc1909250
       internalID: 1636045381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockPack1080x1080_1
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 6
+        width: 228
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a79dbe686a0ee45a3e7d494771b0f7
+      internalID: -111969457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockPack1080x1080_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 400
+        width: 378
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15f0668428d4e74c9c936b9c44382a2
+      internalID: 2098116386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockPack1080x1080_3
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 614
+        width: 215
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911a29b5216441743a04a8dace94b4ce
+      internalID: -1054870076
       vertices: []
       indices: 
       edges: []
@@ -142,6 +205,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       RockPack1080x1080_0: 1636045381
+      RockPack1080x1080_1: -111969457
+      RockPack1080x1080_2: 2098116386
+      RockPack1080x1080_3: -1054870076
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

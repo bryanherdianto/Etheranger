@@ -7,7 +7,6 @@ public class CameraManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera idleCam;
     [SerializeField] private CinemachineVirtualCamera followCam;
-
     private void Awake()
     {
         SwitchToIdleCam();

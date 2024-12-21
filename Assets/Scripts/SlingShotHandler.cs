@@ -34,7 +34,7 @@ public class SlingShotHandler : MonoBehaviour
     [Header("Bird")]
     [SerializeField] private AngryBird angryBirdPrefab;
     [SerializeField] private float angryBirdPositionOffset = 2f;
-    [SerializeField] private float timeBetweenBirdRespawns = 2f;
+    [SerializeField] private float timeBetweenBirdRespawns = 3f;
 
     [Header("Sound")]
     [SerializeField] private AudioClip slingshotPullSound;
