@@ -8,7 +8,7 @@ public class FlyingPatrol : Patrol
     private float verticalDirection = 0f;
     private float verticalMoveTimer = 0f;
 
-    void Start()
+    protected override void Start()
     {
         base.Start();
         verticalDirection = Random.Range(-verticalMoveRange, verticalMoveRange);
