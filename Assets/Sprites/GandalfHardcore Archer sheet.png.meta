@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bdbb4316cff95fc4fab5e5b684ce5331
+guid: ce32e6d38efe655468e237d46ee5ed2f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,64 +110,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BUTTONS_SHEET_1_0
+      name: Frame_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 181
-        width: 96
-        height: 95
+        x: 10
+        y: 256
+        width: 32
+        height: 43
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fccc884f90a5dff4b94fbd360a86f0cd
-      internalID: 194217061
+      spriteID: 00c612a3651e5dd4f912dba054bc315a
+      internalID: 987772168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BUTTONS_SHEET_1_2
+      name: Frame_1
       rect:
         serializedVersion: 2
-        x: 344
-        y: 590
-        width: 82
-        height: 82
+        x: 74
+        y: 256
+        width: 32
+        height: 43
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d06e4066c3b14d4a8dfd88bc2b820d6
-      internalID: 1969357415
+      spriteID: 88eb891f052cb564fbff63db7a04d9a0
+      internalID: 1126913692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BUTTONS_SHEET_1_3
+      name: Frame_2
       rect:
         serializedVersion: 2
-        x: 235
-        y: 590
-        width: 82
-        height: 82
+        x: 138
+        y: 256
+        width: 32
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75b89751ee10c63458164a528f424ead
-      internalID: -1703350388
+      spriteID: 6811e40b89f1cd24793797c86052c784
+      internalID: -1690501197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame_3
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 256
+        width: 32
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c27db1addf878e4fa7cbbaaaadc566c
+      internalID: -270042260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame_4
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 256
+        width: 32
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50e177daf2f244f42a5586e2f2edbfd8
+      internalID: 1893212939
       vertices: []
       indices: 
       edges: []
@@ -183,10 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BUTTONS_SHEET_1_0: 194217061
-      BUTTONS_SHEET_1_1: -1285955386
-      BUTTONS_SHEET_1_2: 1969357415
-      BUTTONS_SHEET_1_3: -1703350388
+      Frame_0: 987772168
+      Frame_1: 1126913692
+      Frame_2: -1690501197
+      Frame_3: -270042260
+      Frame_4: 1893212939
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

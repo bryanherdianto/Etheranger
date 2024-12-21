@@ -29,6 +29,7 @@ public class SlingShotHandler : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private SlingShotArea slingShotArea;
     [SerializeField] private CameraManager cameraManager;
+    [SerializeField] private TrajectoryLine trajectoryLine;
 
     [Header("Bird")]
     [SerializeField] private AngryBird angryBirdPrefab;
@@ -77,6 +78,7 @@ public class SlingShotHandler : MonoBehaviour
         {
             DrawLine();
             PositionAndRotateAngryBird();
+            trajectoryLine.DrawTrajectory(direction, shotForce);
         }
 
         if (InputManager.wasLeftReleased && birdOnSlingshot && clickedWithinArea)
@@ -89,6 +91,8 @@ public class SlingShotHandler : MonoBehaviour
                 GameManager.instance.UseShot();
                 
                 spawnedAngryBird.LaunchBird(direction, shotForce);
+
+                trajectoryLine.ClearTrajectory();
 
                 SoundManager.instance.PlayClip(slingshotReleaseSound, audioSource);
 
