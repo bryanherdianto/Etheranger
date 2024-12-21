@@ -3910,6 +3910,10 @@ MonoBehaviour:
   timeBetweenBirdRespawns: 2
   slingshotPullSound: {fileID: 8300000, guid: 244d83bfaad156d4891da5bfe9228633, type: 3}
   slingshotReleaseSound: {fileID: 8300000, guid: 404c48331efa2dd4b9cd4ea772d955eb, type: 3}
+  isBomb: 0
+  bombBlastForce: 20
+  bombBlastRadius: 3
+  animator: {fileID: 0}
 --- !u!82 &1989722972
 AudioSource:
   m_ObjectHideFlags: 0

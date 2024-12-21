@@ -40,6 +40,10 @@ public class SlingShotHandler : MonoBehaviour
     [SerializeField] private AudioClip slingshotPullSound;
     [SerializeField] private AudioClip slingshotReleaseSound;
 
+    [Header("Bomb Projectile")]
+    [SerializeField] private float bombBlastForce = 10f;
+    [SerializeField] private float bombBlastRadius = 3f;
+
     private Vector2 slingShotLinePosition;
     private Vector2 direction;
     private Vector2 directionNormalized;
@@ -144,6 +148,15 @@ public class SlingShotHandler : MonoBehaviour
         Vector2 spawnPosition = (Vector2)idlePosition.position + dir * angryBirdPositionOffset;
         spawnedAngryBird = Instantiate(angryBirdPrefab, spawnPosition, Quaternion.identity);
         spawnedAngryBird.transform.right = dir;
+
+        if (spawnedAngryBird.isBomb)
+        {
+            spawnedAngryBird.SetProjectileBehavior(new BombProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedAngryBird.GetComponent<Animator>()));
+        }
+        else
+        {
+            spawnedAngryBird.SetProjectileBehavior(new NormalProjectileBehavior());
+        }
 
         birdOnSlingshot = true;
     }

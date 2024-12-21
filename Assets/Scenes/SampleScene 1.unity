@@ -3905,11 +3905,13 @@ MonoBehaviour:
   slingShotArea: {fileID: 1622784029}
   cameraManager: {fileID: 1184612229}
   trajectoryLine: {fileID: 1817567561}
-  angryBirdPrefab: {fileID: 665527851927130835, guid: 8a210370ccc44874ca21bf289d8003ad, type: 3}
+  angryBirdPrefab: {fileID: 665527851927130835, guid: e52e602f20963504ba38aa854bfef41d, type: 3}
   angryBirdPositionOffset: 0.69
   timeBetweenBirdRespawns: 2
   slingshotPullSound: {fileID: 8300000, guid: 244d83bfaad156d4891da5bfe9228633, type: 3}
   slingshotReleaseSound: {fileID: 8300000, guid: 404c48331efa2dd4b9cd4ea772d955eb, type: 3}
+  bombBlastForce: 10
+  bombBlastRadius: 3
 --- !u!82 &1989722972
 AudioSource:
   m_ObjectHideFlags: 0
