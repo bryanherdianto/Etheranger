@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Drag",
+                    "type": "Button",
+                    "id": "0d7c27cc-c3f3-4e2f-acc6-cc3f3b5f5938",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -66,6 +75,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74f14cd8-55bc-4727-bb1d-1a89fd28588c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
