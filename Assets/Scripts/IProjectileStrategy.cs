@@ -66,3 +66,46 @@ public class BombProjectileBehavior : IProjectileBehavior
     }
 }
 
+public class ShurikenProjectileBehavior : IProjectileBehavior
+{
+    private readonly float pullForce;
+    private readonly float pullRadius;
+    private Animator animator;
+
+    public ShurikenProjectileBehavior(float pullForce, float pullRadius, Animator animator)
+    {
+        this.pullForce = pullForce;
+        this.pullRadius = pullRadius;
+        this.animator = animator;
+    }
+
+    public void OnLaunch(Rigidbody2D rb, Vector2 direction, float force)
+    {
+        rb.isKinematic = false;
+        rb.AddForce(direction * force, ForceMode2D.Impulse);
+
+        if (animator != null)
+        {
+            animator.SetBool("isLaunched", true); 
+        }
+    }
+
+    public void OnCollision(Vector2 position)
+    {   
+        Collider2D[] inBlastRadius = Physics2D.OverlapCircleAll(position, pullRadius);
+
+        foreach (Collider2D obj in inBlastRadius)
+        {
+            Rigidbody2D objectRb = obj.GetComponent<Rigidbody2D>();
+            if (objectRb != null)
+            {
+                Vector2 distanceVector = (Vector2)obj.transform.position - position;
+                if (distanceVector.magnitude > 0)
+                {
+                    float force = -pullForce / distanceVector.magnitude;
+                    objectRb.AddForce(distanceVector.normalized * force, ForceMode2D.Impulse);
+                }
+            }
+        }
+    }
+}

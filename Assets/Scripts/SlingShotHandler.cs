@@ -149,13 +149,19 @@ public class SlingShotHandler : MonoBehaviour
         spawnedAngryBird = Instantiate(angryBirdPrefab, spawnPosition, Quaternion.identity);
         spawnedAngryBird.transform.right = dir;
 
-        if (spawnedAngryBird.isBomb)
+        switch(spawnedAngryBird.projectileType)
         {
-            spawnedAngryBird.SetProjectileBehavior(new BombProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedAngryBird.GetComponent<Animator>()));
-        }
-        else
-        {
-            spawnedAngryBird.SetProjectileBehavior(new NormalProjectileBehavior());
+            case 0:
+                spawnedAngryBird.SetProjectileBehavior(new NormalProjectileBehavior());
+                break;
+            case 1:
+                spawnedAngryBird.SetProjectileBehavior(new BombProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedAngryBird.GetComponent<Animator>()));
+                break;
+            case 2:
+                spawnedAngryBird.SetProjectileBehavior(new ShurikenProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedAngryBird.GetComponent<Animator>()));
+                break;
+            default:
+                break;
         }
 
         birdOnSlingshot = true;

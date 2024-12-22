@@ -5,11 +5,11 @@ using UnityEngine;
 public class AngryBird : MonoBehaviour
 {
     [SerializeField] private AudioClip hitClip;
-    public bool isBomb;
+    public int projectileType;
     private Rigidbody2D rb;
     private CircleCollider2D circleCollider;
     private AudioSource audioSource;
-    private bool hasBeenLaunched;
+    public bool hasBeenLaunched;
 
     private IProjectileBehavior projectileBehavior;
 
@@ -44,10 +44,9 @@ public class AngryBird : MonoBehaviour
         if (hasBeenLaunched)
         {
             projectileBehavior?.OnCollision(transform.position);
-
             SoundManager.instance.PlayClip(hitClip, audioSource);
 
-            if(projectileBehavior is BombProjectileBehavior)
+            if(projectileBehavior is BombProjectileBehavior || projectileBehavior is ShurikenProjectileBehavior)
             {
                 StartCoroutine(HandleExplosionAndDestroy());
             }
