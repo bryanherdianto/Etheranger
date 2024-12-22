@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3530956539312146342}
   - component: {fileID: 8919063987493106243}
   - component: {fileID: 5575981434252608943}
+  - component: {fileID: -8049772562882325247}
   m_Layer: 0
   m_Name: BigStone
   m_TagString: Untagged
@@ -146,7 +147,7 @@ Rigidbody2D:
   m_Mass: 7
   m_LinearDrag: 10
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -158,3 +159,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8049772562882325247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264932310491839047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb42724b928d774b94c679c778ca43f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructionThreshold: 15
+  destructionClip: {fileID: 8300000, guid: 6236870d5ee39c943ace5b7c58006ce5, type: 3}
+  destructionParticles: {fileID: 7591788112300805650, guid: d1f0afc33f8249746ba4528d5f1b2e0c, type: 3}
