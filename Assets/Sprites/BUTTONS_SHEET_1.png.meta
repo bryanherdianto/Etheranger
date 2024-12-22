@@ -172,6 +172,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Text Menu Button
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1034
+        width: 251
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e48d9e836d1d5479cdb6e992b0a43a
+      internalID: -437454429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Small Empty Circle Button
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 692
+        width: 98
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6835ef5458be1c845abe38a65f1253fc
+      internalID: 1113270551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -184,9 +226,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       BUTTONS_SHEET_1_0: 194217061
-      BUTTONS_SHEET_1_1: -1285955386
       BUTTONS_SHEET_1_2: 1969357415
       BUTTONS_SHEET_1_3: -1703350388
+      Small Empty Circle Button: 1113270551
+      Text Menu Button: -1285955386
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

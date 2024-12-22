@@ -41,7 +41,7 @@ public class SlingShotHandler : MonoBehaviour
     [SerializeField] private AudioClip slingshotReleaseSound;
 
     [Header("Bomb Projectile")]
-    [SerializeField] private float bombBlastForce = 10f;
+    [SerializeField] private float bombBlastForce = 3f;
     [SerializeField] private float bombBlastRadius = 3f;
 
     private Vector2 slingShotLinePosition;
