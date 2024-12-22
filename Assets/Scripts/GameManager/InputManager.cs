@@ -24,7 +24,6 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         mousePosition = mousePositionAction.ReadValue<Vector2>();
-
         wasLeftPressed = mouseAction.WasPressedThisFrame();
         wasLeftReleased = mouseAction.WasReleasedThisFrame();
         isLeftPressed = mouseAction.IsPressed();

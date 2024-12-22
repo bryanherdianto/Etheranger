@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Pig : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 3f;
     [SerializeField] private float damageThreshold = 0.2f;
@@ -22,7 +22,7 @@ public class Pig : MonoBehaviour
         float damage = CalculateDamage(collision.relativeVelocity);
         if (damage > damageThreshold)
         {
-            DamagePig(damage);
+            DamageEnemy(damage);
         }
     }
 
@@ -31,7 +31,7 @@ public class Pig : MonoBehaviour
         return collisionVelocity.magnitude;
     }
 
-    public void DamagePig(float damage)
+    public void DamageEnemy(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0f)
@@ -42,7 +42,7 @@ public class Pig : MonoBehaviour
 
     private void Die()
     {
-        GameManager.instance.RemovePig(this);
+        GameManager.instance.RemoveEnemy(this);
         DeathEffect();
         Destroy(gameObject);
     }

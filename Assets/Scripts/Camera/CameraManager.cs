@@ -42,7 +42,6 @@ public class CameraManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f); // Pause for 2 seconds at the beginning of the game
 
-        
         float elapsedTime = 0f;
         while (elapsedTime < moveDuration)
         {
@@ -63,7 +62,6 @@ public class CameraManager : MonoBehaviour
     public void SwitchToFollowCam(Transform trans)
     {
         followCam.Follow = trans;
-
         idleCam.enabled = false;
         followCam.enabled = true;
     }

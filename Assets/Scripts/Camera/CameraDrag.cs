@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
-
 public class CameraDrag : MonoBehaviour
 {
     private Vector3 originalPosition;
     private Vector3 difference;
-    private Camera idleCam;
+    private Camera followCam;
 
     private bool isDragging;
-    private Vector3 GetMousePosition => idleCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+    private Vector3 GetMousePosition => followCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
     
     private void Awake()
     {
-        idleCam = Camera.main;
+        followCam = Camera.main;
     }
 
     public void OnDrag(InputAction.CallbackContext context)
@@ -32,6 +30,4 @@ public class CameraDrag : MonoBehaviour
         difference = GetMousePosition - transform.position;
         transform.position = originalPosition - difference;      
     }
-
-
 }

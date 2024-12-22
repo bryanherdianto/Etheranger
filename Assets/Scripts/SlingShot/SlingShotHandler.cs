@@ -31,10 +31,10 @@ public class SlingShotHandler : MonoBehaviour
     [SerializeField] private CameraManager cameraManager;
     [SerializeField] private TrajectoryLine trajectoryLine;
 
-    [Header("Bird")]
-    [SerializeField] private AngryBird angryBirdPrefab;
-    [SerializeField] private float angryBirdPositionOffset = 2f;
-    [SerializeField] private float timeBetweenBirdRespawns = 3f;
+    [Header("Projectiles")]
+    [SerializeField] public Projectile[] projectilePrefabs;
+    [SerializeField] private float projectilePositionOffset = 2f;
+    [SerializeField] private float timeBetweenProjectileRespawns = 3f;
 
     [Header("Sound")]
     [SerializeField] private AudioClip slingshotPullSound;
@@ -49,11 +49,13 @@ public class SlingShotHandler : MonoBehaviour
     private Vector2 directionNormalized;
 
     private bool clickedWithinArea;
-    private bool birdOnSlingshot;
+    private bool projectileOnSlingshot;
 
-    private AngryBird spawnedAngryBird;
+    private Projectile spawnedProjectile;
 
     private AudioSource audioSource;
+
+    private int currentProjectileIndex = 0;
 
     private void Awake()
     {
@@ -62,7 +64,7 @@ public class SlingShotHandler : MonoBehaviour
         leftLineRenderer.enabled = false;
         rightLineRenderer.enabled = false;
 
-        SpawnAngryBird();
+        SpawnProjectile();
     }
 
     private void Update()
@@ -71,30 +73,30 @@ public class SlingShotHandler : MonoBehaviour
         {
             clickedWithinArea = true;
 
-            if (birdOnSlingshot)
+            if (projectileOnSlingshot)
             {
                 SoundManager.instance.PlayClip(slingshotPullSound, audioSource);
-                cameraManager.SwitchToFollowCam(spawnedAngryBird.transform);
+                cameraManager.SwitchToFollowCam(spawnedProjectile.transform);
             }
         }
 
-        if (InputManager.isLeftPressed && clickedWithinArea && birdOnSlingshot)
+        if (InputManager.isLeftPressed && clickedWithinArea && projectileOnSlingshot)
         {
             DrawLine();
-            PositionAndRotateAngryBird();
+            PositionAndRotateProjectile();
             trajectoryLine.DrawTrajectory(direction, shotForce);
         }
 
-        if (InputManager.wasLeftReleased && birdOnSlingshot && clickedWithinArea)
+        if (InputManager.wasLeftReleased && projectileOnSlingshot && clickedWithinArea)
         {
-            if(GameManager.instance.HasEnoughBirds())
+            if(GameManager.instance.HasEnoughProjectiles())
             {
                 clickedWithinArea = false;
-                birdOnSlingshot = false;
+                projectileOnSlingshot = false;
 
                 GameManager.instance.UseShot();
                 
-                spawnedAngryBird.LaunchBird(direction, shotForce);
+                spawnedProjectile.LaunchProjectile(direction, shotForce);
 
                 trajectoryLine.ClearTrajectory();
 
@@ -102,9 +104,9 @@ public class SlingShotHandler : MonoBehaviour
 
                 AnimateSlingshot();
 
-                if(GameManager.instance.HasEnoughBirds())
+                if(GameManager.instance.HasEnoughProjectiles())
                 {
-                    StartCoroutine(SpawnAngryBirdAfterTime());
+                    StartCoroutine(SpawnProjectileAfterTime());
                 }
             }
         }
@@ -139,44 +141,46 @@ public class SlingShotHandler : MonoBehaviour
 
     #region Projectile Methods
 
-    private void SpawnAngryBird()
+    private void SpawnProjectile()
     {
         elasticTransform.DOComplete();
         SetLines(idlePosition.position);
 
         Vector2 dir = (centerPosition.position - idlePosition.position).normalized;
-        Vector2 spawnPosition = (Vector2)idlePosition.position + dir * angryBirdPositionOffset;
-        spawnedAngryBird = Instantiate(angryBirdPrefab, spawnPosition, Quaternion.identity);
-        spawnedAngryBird.transform.right = dir;
+        Vector2 spawnPosition = (Vector2)idlePosition.position + dir * projectilePositionOffset;
+        spawnedProjectile = Instantiate(projectilePrefabs[currentProjectileIndex], spawnPosition, Quaternion.identity);
+        spawnedProjectile.transform.right = dir;
+        
+        currentProjectileIndex = (currentProjectileIndex + 1) % projectilePrefabs.Length;
 
-        switch(spawnedAngryBird.projectileType)
+        switch(spawnedProjectile.projectileType)
         {
             case 0:
-                spawnedAngryBird.SetProjectileBehavior(new NormalProjectileBehavior());
+                spawnedProjectile.SetProjectileBehavior(new NormalProjectileBehavior());
                 break;
             case 1:
-                spawnedAngryBird.SetProjectileBehavior(new BombProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedAngryBird.GetComponent<Animator>()));
+                spawnedProjectile.SetProjectileBehavior(new BombProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedProjectile.GetComponent<Animator>()));
                 break;
             case 2:
-                spawnedAngryBird.SetProjectileBehavior(new ShurikenProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedAngryBird.GetComponent<Animator>()));
+                spawnedProjectile.SetProjectileBehavior(new ShurikenProjectileBehavior(bombBlastForce, bombBlastRadius, spawnedProjectile.GetComponent<Animator>()));
                 break;
             default:
                 break;
         }
 
-        birdOnSlingshot = true;
+        projectileOnSlingshot = true;
     }
 
-    private void PositionAndRotateAngryBird()
+    private void PositionAndRotateProjectile()
     {
-        spawnedAngryBird.transform.position = slingShotLinePosition + directionNormalized * angryBirdPositionOffset;
-        spawnedAngryBird.transform.right = directionNormalized;
+        spawnedProjectile.transform.position = slingShotLinePosition + directionNormalized * projectilePositionOffset;
+        spawnedProjectile.transform.right = directionNormalized;
     }
 
-    private IEnumerator SpawnAngryBirdAfterTime()
+    private IEnumerator SpawnProjectileAfterTime()
     {
-        yield return new WaitForSeconds(timeBetweenBirdRespawns);
-        SpawnAngryBird();
+        yield return new WaitForSeconds(timeBetweenProjectileRespawns);
+        SpawnProjectile();
         cameraManager.SwitchToIdleCam();
     }
     #endregion

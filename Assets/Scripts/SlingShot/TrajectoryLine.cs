@@ -6,7 +6,7 @@ public class TrajectoryLine : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform bulletSpawnPoint;
-    [SerializeField] private AngryBird bulletBehaviour;
+    [SerializeField] private Projectile bulletBehaviour;
 
     [Header("Trajectory Line Smoothness and Length")]
     [SerializeField] private int lineSegmentCount = 50;
