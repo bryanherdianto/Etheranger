@@ -11,16 +11,20 @@ public class StarHandler : MonoBehaviour
 
     public void GetStars(int starsGained)
     {
+        StartCoroutine(PopulateStars(starsGained));
+    }
+
+    private IEnumerator PopulateStars(int starsGained)
+    {
         for (int i = 0; i < starIcons.Length; i++)
         {
-            if (i < starsGained)
-            {
-                starIcons[i].sprite = gainedStarSprite;
-            }
-            else
-            {
-                starIcons[i].sprite = notGainedStarSprite; 
-            }
+            starIcons[i].sprite = notGainedStarSprite;
+        }
+
+        for (int i = 0; i < starsGained; i++)
+        {
+            starIcons[i].sprite = gainedStarSprite;
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
