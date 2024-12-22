@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Patrol : Pig
+public class Patrol : Enemy
 {
     [SerializeField] private float patrolDistance = 5f;
     [SerializeField] protected float moveSpeed = 2f;

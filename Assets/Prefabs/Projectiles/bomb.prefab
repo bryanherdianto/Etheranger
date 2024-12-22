@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1761529075258312798}
   - component: {fileID: 214357919994143854}
   - component: {fileID: 8492634849304140091}
-  - component: {fileID: 665527851927130835}
   - component: {fileID: -3350088022895631245}
   - component: {fileID: 2234516998499238110}
+  - component: {fileID: 5558739262983095069}
   m_Layer: 0
   m_Name: bomb
   m_TagString: Untagged
@@ -151,20 +151,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.065
---- !u!114 &665527851927130835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005167266705244075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd5bea42d68d0443b3f084135d2dcf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitClip: {fileID: 8300000, guid: 6236870d5ee39c943ace5b7c58006ce5, type: 3}
-  projectileType: 1
 --- !u!82 &-3350088022895631245
 AudioSource:
   m_ObjectHideFlags: 0
@@ -282,3 +268,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5558739262983095069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005167266705244075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa54be2583d13ec428f05a9a27db01ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitClip: {fileID: 8300000, guid: 6236870d5ee39c943ace5b7c58006ce5, type: 3}
+  projectileType: 1
+  hasBeenLaunched: 0

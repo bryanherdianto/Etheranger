@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AngryBird : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     [SerializeField] private AudioClip hitClip;
     public int projectileType;
@@ -31,7 +31,7 @@ public class AngryBird : MonoBehaviour
         projectileBehavior = behavior;
     }
 
-    public void LaunchBird(Vector2 direction, float force)
+    public void LaunchProjectile(Vector2 direction, float force)
     {
         circleCollider.enabled = true;
         hasBeenLaunched = true;
