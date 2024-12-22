@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private IconHandler iconHandler;
+    private StarHandler starHandler;
     private List<Pig> pigs = new List<Pig>();
     
     public int maxNumberOfBirds = 3;
     public int usedNumberOfShots;
+    public int starsGained = 4;
     [SerializeField] private GameObject restartScreen;
     [SerializeField] private SlingShotHandler slingShotHandler;
     [SerializeField] private float secondsToWaitBeforeWinCheck = 3f;
@@ -30,8 +33,8 @@ public class GameManager : MonoBehaviour
 
         nextLevelImage.enabled = false;
 
-        nextLevelImage.rectTransform.anchoredPosition = new Vector2(0, 0);
-        restartImage.rectTransform.anchoredPosition = new Vector2(0, 0);
+        nextLevelImage.rectTransform.anchoredPosition = new Vector2(0, -100);
+        restartImage.rectTransform.anchoredPosition = new Vector2(0, -100);
 
         Pig[] pigsArray = FindObjectsOfType<Pig>();
 
@@ -44,6 +47,8 @@ public class GameManager : MonoBehaviour
     public void UseShot()
     {
         usedNumberOfShots++;
+        starsGained--;
+        
         iconHandler.UseShot(usedNumberOfShots);
 
         CheckForLastShot();
@@ -96,6 +101,9 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         restartScreen.SetActive(true);
+        starHandler = FindObjectOfType<StarHandler>();
+        starHandler.GetStars(starsGained);
+
         slingShotHandler.enabled = false;
 
         // check if there is any more levels
@@ -104,8 +112,8 @@ public class GameManager : MonoBehaviour
         if (currentSceneIndex + 1 < maxLevels)
         {
             nextLevelImage.enabled = true;
-            nextLevelImage.rectTransform.anchoredPosition = new Vector2(70, 0);
-            restartImage.rectTransform.anchoredPosition = new Vector2(-70, 0);
+            nextLevelImage.rectTransform.anchoredPosition = new Vector2(70, -100);
+            restartImage.rectTransform.anchoredPosition = new Vector2(-70, -100);
         }
         PlayerPrefs.SetInt("UnlockedLevel", currentSceneIndex + 1);
         PlayerPrefs.SetInt("ReachedIndex", currentSceneIndex);
