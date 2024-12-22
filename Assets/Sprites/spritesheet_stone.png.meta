@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bdbb4316cff95fc4fab5e5b684ce5331
+guid: 959cbe1c68c9b724e814e5546e95add5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 121, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -110,160 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BUTTONS_SHEET_1_0
+      name: Stone_Tall
       rect:
         serializedVersion: 2
-        x: 108
-        y: 181
-        width: 96
-        height: 95
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fccc884f90a5dff4b94fbd360a86f0cd
-      internalID: 194217061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BUTTONS_SHEET_1_2
-      rect:
-        serializedVersion: 2
-        x: 344
-        y: 590
-        width: 82
-        height: 82
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d06e4066c3b14d4a8dfd88bc2b820d6
-      internalID: 1969357415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BUTTONS_SHEET_1_3
-      rect:
-        serializedVersion: 2
-        x: 235
-        y: 590
-        width: 82
-        height: 82
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75b89751ee10c63458164a528f424ead
-      internalID: -1703350388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Text Menu Button
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 1034
-        width: 251
-        height: 103
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58e48d9e836d1d5479cdb6e992b0a43a
-      internalID: -437454429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Small Empty Circle Button
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 692
-        width: 98
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6835ef5458be1c845abe38a65f1253fc
-      internalID: 1113270551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BUTTONS_MENU
-      rect:
-        serializedVersion: 2
-        x: 541
-        y: 578
-        width: 100
-        height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86c66a50238a755458b2bf6ae83e904a
-      internalID: -1704132795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BUTTONS_HOME
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 83
-        width: 97
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a5f63f56a9d4ea448b46ea316d31063
-      internalID: 1127275997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BUTTONS_QUIT
-      rect:
-        serializedVersion: 2
-        x: 436
+        x: 641
         y: 804
-        width: 101
-        height: 102
+        width: 69
+        height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,29 +124,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8219bc1bb2d6fdc439d1be4b748379fe
-      internalID: 1336599939
+      spriteID: 257596bd022f5e345a9bac18257f6492
+      internalID: -615295703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BUTTONS_RETURN
+      name: Stone_Big
       rect:
         serializedVersion: 2
-        x: 3
-        y: 577
-        width: 99
-        height: 98
+        x: 0
+        y: 254
+        width: 219
+        height: 139
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f4f058380220134aa6aa31c9d500323
-      internalID: -478616826
+      spriteID: c7b255f4470617246a3795720a4711e5
+      internalID: -1907764794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Circle
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 594
+        width: 70
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e55a1e1ffd7f24eba2ce0226970b0b
+      internalID: -1909404152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Square_Hollow
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 174
+        width: 70
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6199dfa053929e43ba6c03cb7bb9e15
+      internalID: 759507486
       vertices: []
       indices: 
       edges: []
@@ -302,22 +197,17 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BUTTONS_HOME: 1127275997
-      BUTTONS_MENU: -1704132795
-      BUTTONS_QUIT: 1336599939
-      BUTTONS_RETURN: -478616826
-      BUTTONS_SHEET_1_0: 194217061
-      BUTTONS_SHEET_1_2: 1969357415
-      BUTTONS_SHEET_1_3: -1703350388
-      Small Empty Circle Button: 1113270551
-      Text Menu Button: -1285955386
+      Stone_Big: -1907764794
+      Stone_Circle: -1909404152
+      Stone_Square_Hollow: 759507486
+      Stone_Tall: -615295703
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

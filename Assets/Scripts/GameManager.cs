@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
             nextLevelImage.rectTransform.anchoredPosition = new Vector2(70, 0);
             restartImage.rectTransform.anchoredPosition = new Vector2(-70, 0);
         }
+        PlayerPrefs.SetInt("UnlockedLevel", currentSceneIndex + 1);
+        PlayerPrefs.SetInt("ReachedIndex", currentSceneIndex);
     }
 
     public void RestartGame()

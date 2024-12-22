@@ -9,6 +9,7 @@ public class LevelMenu : MonoBehaviour
 
     private void Awake()
     {
+        //PlayerPrefs.SetInt("UnlockedLevel", 1); // Set only the first level to be unlocked
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
         for (int i = 0; i < buttons.Length; i++)
         {
